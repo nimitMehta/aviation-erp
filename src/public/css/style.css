@@ -1,0 +1,605 @@
+/* General Reset */
+body, h1, h2, h3, p, ul, li, a, form, button {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+  
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f3f8fc; /* Soft light blue background */
+    color: #1e3a8a; /* Navy blue font color for consistency */
+}
+
+/* Container */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Auth Box */
+.auth-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 400px;
+    text-align: center;
+}
+
+.auth-title {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.auth-description {
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 30px;
+}
+
+.auth-error {
+    color: #ff4d4d;
+    margin-top: 10px;
+}
+
+/* Form Elements */
+.auth-form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.auth-label {
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333333;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+/* Button */
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    width: 100%;
+}
+  
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background-color: #eff6ff; /* Light blue background */
+    color: #1e3a8a; /* Navy blue font color */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+  
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+    background-color: #dbeafe; /* Lighter blue */
+    font-size: 20px;
+    font-weight: bold;
+}
+  
+.sidebar-menu {
+    flex-grow: 1;
+    padding: 20px;
+}
+  
+.sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+}
+  
+.sidebar-menu ul li {
+    margin-bottom: 15px;
+}
+  
+.sidebar-menu ul li a {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+  
+.sidebar-menu ul li a:hover {
+    color: #2563eb; /* Brighter blue */
+}
+  
+.submenu .dropdown {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+  
+.submenu:hover .dropdown {
+    display: block;
+}
+
+/* Dropdown Menu */
+.submenu .dropdown li {
+    margin-bottom: 20px; /* Space between dropdown items */
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    gap: 10px; /* Add space between the icon and text */
+}
+  
+.submenu .dropdown li a {
+    display: flex;
+    align-items: center; /* Align icon and text in dropdown links */
+    color: #1e3a8a; /* Navy blue font color for dropdown items */
+    text-decoration: none;
+    font-size: 14px; /* Slightly smaller font size for dropdown */
+    transition: color 0.3s ease;
+}
+  
+.submenu .dropdown li a:hover {
+    color: #2563eb; /* Brighter blue on hover */
+}
+  
+.submenu .dropdown li a i {
+    font-size: 14px; /* Icon size for dropdown items */
+    color: #1e3a8a; /* Match icon color with text */
+}
+  
+.dropdown-icon {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+  
+.submenu:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+  
+.sidebar-footer {
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #dbeafe;
+}
+  
+.logout-btn {
+    background-color: #d1e7fd; /* Soft blue background */
+    color: #083d77; /* Deep blue font color for high contrast */
+    padding: 15px 20px; /* Increased padding for a larger button */
+    border: none;
+    border-radius: 8px; /* Slightly rounded corners */
+    cursor: pointer;
+    font-size: 16px; /* Larger font size for better readability */
+    font-weight: bold; /* Bold text for emphasis */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+  
+.logout-btn:hover {
+    background-color: #a5d8f3; /* Slightly darker blue on hover */
+    color: #062c54; /* Even darker blue for hover font color */
+}  
+  
+/* Content Area */
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #ffffff; /* White */
+    overflow-y: auto;
+}
+  
+/* Content Header */
+.content-header {
+    background-color: #eaf4fe; /* Soft pastel blue background */
+    padding: 20px 30px; /* Add padding for better spacing */
+    border-radius: 10px; /* Rounded corners for elegance */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+    margin-bottom: 30px; /* Add spacing below the header */
+}
+  
+.content-header h1 {
+    font-size: 28px; /* Larger font size for prominence */
+    color: #083d77; /* Deep navy blue for high contrast */
+    text-align: center; /* Center-align the header text */
+    margin: 0; /* Remove default margins */
+}
+    
+.content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+  
+/* Home Page Container */
+.home-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+  
+  /* Welcome Section */
+.welcome-section {
+    text-align: center;
+    background-color: #eaf4fe; /* Soft pastel blue background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+  
+.welcome-section h2 {
+    font-size: 28px;
+    color: #083d77; /* Dark blue for emphasis */
+    margin-bottom: 10px;
+}
+  
+.welcome-section p {
+    font-size: 16px;
+    color: #345f91; /* Slightly lighter blue for text */
+}
+  
+  /* Stats Section */
+.stats-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+  
+.stat-card {
+    flex: 1;
+    max-width: 300px;
+    background-color: #ffffff; /* White card background for contrast */
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+  
+.stat-card h3 {
+    font-size: 20px;
+    color: #083d77;
+    margin-bottom: 10px;
+}
+  
+.stat-card p {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2563eb; /* Bright blue for numbers */
+}
+
+/* Aircraft Page */
+.aircraft-container {
+    padding: 30px; /* Consistent padding for spacing */
+    background-color: #f3f8fc; /* Light blue background for the container */
+    border-radius: 10px; /* Rounded corners for a clean look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+  
+.aircraft-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+  
+.add-btn {
+  background-color: #3b82f6; /* Vibrant blue background */
+  color: #ffffff; /* White text for high contrast */
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px; /* Slightly rounded corners for a clean look */
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #2563eb; /* Slightly darker blue on hover */
+  box-shadow: 0 6px 8px rgba(37, 99, 235, 0.2); /* Subtle hover shadow */
+}
+
+.add-btn:active {
+  background-color: #1d4ed8; /* Deeper blue when active */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+}
+
+  
+.aircraft-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+  
+.aircraft-table th, .aircraft-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+  
+.aircraft-table th {
+    background-color: #eaf4fe;
+    color: #083d77;
+}
+  
+.aircraft-table td {
+    color: #1e3a8a;
+}
+  
+.aircraft-table tr:hover {
+    background-color: #f1f5f9;
+}
+  
+/* Modal Overlay */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #ffffff;
+    padding: 40px; /* Increased padding for more spacious design */
+    border-radius: 12px; /* Slightly more rounded corners */
+    width: 450px; /* Wider modal */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Stronger shadow for better focus */
+    position: relative;
+}
+
+/* Modal Title */
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #083d77; /* Deep blue */
+  margin-bottom: 40px;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #1e3a8a; /* Navy blue */
+}
+
+/* Form Styles */
+/* Form Row */
+.modal-form .form-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    gap: 20px; /* Space between inputs */
+    margin-bottom: 20px; /* Space between rows */
+}
+  
+.modal-form .form-group {
+    flex: 1; /* Equal width for inputs */
+    min-width: calc(50% - 20px); /* Ensure at least half-width minus gap */
+}
+  
+.modal-form label {
+    font-size: 14px;
+    color: #1e3a8a;
+    margin-bottom: 8px; /* Add space between label and input */
+    display: block; /* Ensure label stays on its own line */
+}
+  
+.modal-form input {
+    width: 100%; /* Stay within the form group */
+    max-width: 100%; /* Prevent overflow beyond container */
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #d1e7fd;
+    border-radius: 5px;
+    color: #083d77;
+    box-sizing: border-box; /* Includes padding in width calculation */
+}
+  
+  
+.modal-form input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
+}
+
+.modal-form select {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #d1e7fd;
+  border-radius: 5px;
+  color: #083d77;
+  background-color: #ffffff; /* White background */
+  box-sizing: border-box;
+}
+
+.modal-form select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
+}
+  
+/* Submit Button */
+.submit-btn {
+    background-color: #2563eb; /* Bright blue */
+    color: #ffffff; /* White text */
+    padding: 12px 20px; /* Spacious padding for a larger button */
+    font-size: 16px; /* Slightly larger font for better visibility */
+    font-weight: bold; /* Bold text for emphasis */
+    border: none;
+    border-radius: 50px; /* Fully rounded button for a modern look */
+    cursor: pointer;
+    width: 100%; /* Full width button for uniformity */
+    text-align: center;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+  
+.submit-btn:hover {
+    background-color: #1e40af; /* Darker blue on hover */
+    box-shadow: 0 6px 8px rgba(30, 64, 175, 0.2); /* Subtle shadow for hover effect */
+}
+  
+.submit-btn:active {
+    background-color: #1e3a8a; /* Slightly deeper blue on click */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+}
+
+/* Crew Container */
+.crew-container {
+  padding: 30px; /* Consistent padding for spacing */
+  background-color: #f3f8fc; /* Light blue background for the container */
+  border-radius: 10px; /* Rounded corners for a clean look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Crew Header */
+.crew-header {
+  display: flex;
+  justify-content: space-between; /* Align Add button and title */
+  align-items: center;
+  margin-bottom: 20px; /* Space between header and table */
+}
+
+.crew-header h2 {
+  font-size: 24px; /* Emphasized title size */
+  font-weight: bold;
+  color: #083d77; /* Deep navy blue */
+}
+
+/* Crew Table */
+.crew-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.crew-table th, .crew-table td {
+  padding: 12px 15px; /* Increased padding for better spacing */
+  text-align: left;
+  border-bottom: 1px solid #ddd; /* Subtle border for row separation */
+}
+
+.crew-table th {
+  background-color: #eaf4fe; /* Soft blue header background */
+  color: #083d77; /* Deep navy blue font color */
+  font-weight: bold;
+}
+
+.crew-table td {
+  color: #1e3a8a; /* Navy blue text for rows */
+}
+
+.crew-table tr:hover {
+  background-color: #f1f5f9; /* Light hover effect */
+}
+
+/* Crew Rostering Container */
+.crew-rostering-container {
+  padding: 30px; /* Consistent spacing for content */
+  background-color: #f3f8fc; /* Soft light blue background for the container */
+  border-radius: 10px; /* Rounded corners for elegance */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  /* margin: 20px auto; Center alignment with spacing */
+  /* max-width: 1200px; Limit width for better readability */
+}
+
+/* Rostering Header */
+.rostering-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Space between header and table */
+}
+
+.rostering-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #083d77; /* Deep navy blue for the title */
+}
+
+/* Rostering Table */
+.rostering-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Space above the table */
+}
+
+.rostering-table th, .rostering-table td {
+  padding: 12px 15px; /* Spacing for readability */
+  text-align: left;
+  border-bottom: 1px solid #ddd; /* Row separation */
+}
+
+.rostering-table th {
+  background-color: #eaf4fe; /* Soft blue header background */
+  color: #083d77; /* Deep navy blue for text */
+  font-weight: bold;
+}
+
+.rostering-table td {
+  color: #1e3a8a; /* Navy blue for table rows */
+}
+
+.rostering-table tr:hover {
+  background-color: #f1f5f9; /* Light hover effect */
+}
+
+/* Date-Time Inputs */
+.modal-form input[type="datetime-local"] {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #d1e7fd;
+  border-radius: 5px;
+}

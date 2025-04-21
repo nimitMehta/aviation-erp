@@ -1,0 +1,158 @@
+<div class="crew-rostering-container">
+  <header class="rostering-header">
+    <h2>Crew Rostering</h2>
+    <button class="add-btn" onclick="openModal()">Add Crew Rostering</button>
+  </header>
+
+  <table class="rostering-table">
+    <thead>
+      <tr>
+        <th>Aircraft Name</th>
+        <th>Flight No.</th>
+        <th>Flight Type</th>
+        <th>Captain Name</th>
+        <th>Co-Pilot Name</th>
+        <th>Departure Time</th>
+        <th>Arrival Time</th>
+        <th>Departure Airport</th>
+        <th>Arrival Airport</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (rostering && rostering.length > 0) { %>
+        <% rostering.forEach(record => { %>
+          <tr>
+            <td><%= record.aircraftName %></td>
+            <td><%= record.flightNo %></td>
+            <td><%= record.flightType %></td>
+            <td><%= record.captainName %></td>
+            <td><%= record.coPilotName %></td>
+            <td><%= record.departureTime %></td>
+            <td><%= record.arrivalTime %></td>
+            <td><%= record.departureAirport %></td>
+            <td><%= record.arrivalAirport %></td>
+          </tr>
+        <% }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="9">No crew rostering records found.</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+
+<!-- Add Crew Rostering Modal -->
+<div id="addRosteringModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h3 class="modal-title">Add Crew Rostering</h3>
+    <form action="/crew-rostering" method="POST" class="modal-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="aircraftName">Aircraft Name:</label>
+          <select id="aircraftName" name="aircraftName" onchange="updateFlightDetails()" required>
+            <option value="" disabled selected>Select aircraft</option>
+            <% aircrafts.forEach(aircraft => { %>
+              <option value="<%= aircraft.manufacturer %>" data-model="<%= aircraft.aircraftModel %>" data-type="<%= aircraft.type %>">
+                <%= aircraft.manufacturer %>
+              </option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="flightNo">Flight No.:</label>
+          <input type="text" id="flightNo" name="flightNo" readonly>
+        </div>
+        <div class="form-group">
+          <label for="flightType">Flight Type:</label>
+          <input type="text" id="flightType" name="flightType" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="captainName">Captain Name:</label>
+          <select id="captainName" name="captainName" onchange="updateCoPilotOptions()" required>
+            <option value="" disabled selected>Select captain</option>
+            <% crew.forEach(member => { %>
+              <option value="<%= member.firstName + ' ' + member.lastName %>">
+                <%= member.firstName %> <%= member.lastName %>
+              </option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="coPilotName">Co-Pilot Name:</label>
+          <select id="coPilotName" name="coPilotName" required>
+            <option value="" disabled selected>Select co-pilot</option>
+            <% crew.forEach(member => { %>
+              <option value="<%= member.firstName + ' ' + member.lastName %>">
+                <%= member.firstName %> <%= member.lastName %>
+              </option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="departureTime">Departure Time:</label>
+          <input type="datetime-local" id="departureTime" name="departureTime" required>
+        </div>
+        <div class="form-group">
+          <label for="arrivalTime">Arrival Time:</label>
+          <input type="datetime-local" id="arrivalTime" name="arrivalTime" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="departureAirport">Departure Airport:</label>
+          <select id="departureAirport" name="departureAirport" required>
+            <option value="" disabled selected>Select airport</option>
+            <% airports.forEach(airport => { %>
+              <option value="<%= airport %>"><%= airport %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="arrivalAirport">Arrival Airport:</label>
+          <select id="arrivalAirport" name="arrivalAirport" required>
+            <option value="" disabled selected>Select airport</option>
+            <% airports.forEach(airport => { %>
+              <option value="<%= airport %>"><%= airport %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Add Crew Rostering</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function updateFlightDetails() {
+    const aircraft = document.getElementById('aircraftName');
+    const selectedOption = aircraft.options[aircraft.selectedIndex];
+    document.getElementById('flightNo').value = selectedOption.dataset.model || '';
+    document.getElementById('flightType').value = selectedOption.dataset.type || '';
+  }
+
+  function updateCoPilotOptions() {
+    const captainName = document.getElementById('captainName').value;
+    const coPilotName = document.getElementById('coPilotName');
+    Array.from(coPilotName.options).forEach(option => {
+      option.disabled = option.value === captainName;
+    });
+  }
+
+  function closeModal() {
+    document.getElementById('addRosteringModal').style.display = 'none';
+  }
+
+  function openModal() {
+    document.getElementById('addRosteringModal').style.display = 'flex';
+  }
+</script>

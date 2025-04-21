@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <h1 class="auth-title">Sign In</h1>
+      <p class="auth-description">Securely sign in using your phone number.</p>
+
+      <% if (!phone) { %>
+        <!-- Phone Input -->
+        <form action="/sign-in/send" method="POST">
+          <div class="auth-form-group">
+            <label for="phone" class="auth-label">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+917984589298" required class="auth-input">
+          </div>
+          <button type="submit" class="auth-btn">Send OTP</button>
+        </form>
+      <% } else { %>
+        <!-- OTP Input -->
+        <form action="/sign-in/verify" method="POST">
+          <div class="auth-form-group">
+            <label for="otp" class="auth-label">Enter OTP</label>
+            <input type="text" id="otp" name="code" placeholder="Enter the OTP" required class="auth-input">
+            <input type="hidden" name="phone" value="<%= phone %>">
+          </div>
+          <button type="submit" class="auth-btn">Verify OTP</button>
+        </form>
+      <% } %>
+
+      <% if (message) { %>
+        <p class="auth-error"><%= message %></p>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>

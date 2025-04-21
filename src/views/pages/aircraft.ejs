@@ -1,0 +1,83 @@
+<div class="aircraft-container">
+    <header class="aircraft-header">
+      <h2>Aircraft Management</h2>
+      <button class="add-btn" onclick="openModal()">Add Aircraft</button>
+    </header>
+  
+    <table class="aircraft-table">
+      <thead>
+        <tr>
+          <th>Manufacturer</th>
+          <th>Model</th>
+          <th>Registration Number</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (aircrafts && aircrafts.length > 0) { %>
+          <% aircrafts.forEach(aircraft => { %>
+            <tr>
+              <td><%= aircraft.manufacturer %></td>
+              <td><%= aircraft.aircraftModel %></td>
+              <td><%= aircraft.registrationNumber %></td>
+              <td><%= aircraft.type %></td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="4">No aircrafts found.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+</div>
+  
+<!-- Add Aircraft Modal -->
+<div id="addAircraftModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <h3 class="modal-title">Add Aircraft</h3>
+    <form action="/aircraft" method="POST" class="modal-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="manufacturer">Manufacturer:</label>
+          <input type="text" id="manufacturer" name="manufacturer" placeholder="Enter manufacturer" required>
+        </div>
+        <div class="form-group">
+          <label for="model">Model:</label>
+          <input type="text" id="model" name="aircraftModel" placeholder="Enter model" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="registrationNumber">Registration Number:</label>
+          <input type="text" id="registrationNumber" name="registrationNumber" placeholder="Enter registration number" required>
+        </div>
+        <div class="form-group">
+          <label for="type">Type:</label>
+          <select id="type" name="type" required>
+            <option value="" disabled selected>Select type</option>
+            <option value="Rotary Wing">Rotary Wing</option>
+            <option value="Fixed Wing">Fixed Wing</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Add more rows for additional fields -->
+      <button type="submit" class="submit-btn">Add Aircraft</button>
+    </form>
+  </div>
+</div>
+
+  
+<script>
+    function openModal() {
+      document.getElementById('addAircraftModal').style.display = 'flex';
+    }
+  
+    function closeModal() {
+      document.getElementById('addAircraftModal').style.display = 'none';
+    }
+</script>
+  

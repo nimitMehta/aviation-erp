@@ -1,0 +1,96 @@
+<div class="crew-container">
+    <header class="crew-header">
+      <h2>Crew Management</h2>
+      <button class="add-btn" onclick="openModal()">Add Crew Member</button>
+    </header>
+  
+    <table class="crew-table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Designation</th>
+          <th>License Number</th>
+          <th>Crew ID Number</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (crewMembers && crewMembers.length > 0) { %>
+          <% crewMembers.forEach(crew => { %>
+            <tr>
+              <td><%= crew.firstName %></td>
+              <td><%= crew.lastName %></td>
+              <td><%= crew.designation %></td>
+              <td><%= crew.licenseNumber %></td>
+              <td><%= crew.crewIdNumber %></td>
+              <td><%= crew.category %></td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="6">No crew members found.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Add Crew Member Modal -->
+  <div id="addCrewModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 class="modal-title">Add Crew Member</h3>
+      <form action="/crew" method="POST" class="modal-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="designation">Designation:</label>
+            <input type="text" id="designation" name="designation" placeholder="Enter designation" required>
+          </div>
+          <div class="form-group">
+            <label for="licenseNumber">License Number:</label>
+            <input type="text" id="licenseNumber" name="licenseNumber" placeholder="Enter license number" required>
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="crewIdNumber">Crew ID Number:</label>
+            <input type="text" id="crewIdNumber" name="crewIdNumber" placeholder="Enter crew ID number" required>
+          </div>
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+              <option value="" disabled selected>Select category</option>
+              <option value="Cabin Crew">Cabin Crew</option>
+              <option value="Flight Crew">Flight Crew</option>
+            </select>
+          </div>
+        </div>
+  
+        <button type="submit" class="submit-btn">Add Crew Member</button>
+      </form>
+    </div>
+</div>
+  
+<script>
+    function openModal() {
+        document.getElementById('addCrewModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('addCrewModal').style.display = 'none';
+    }
+</script>
+  
