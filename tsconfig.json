@@ -11,7 +11,8 @@
   },
   "include": [
     "src/**/*.ts",                         // Include all TypeScript files in the src folder
-    "src/types/**/*.d.ts"                 // Include custom type definitions
+    "src/types/**/*.d.ts",
+    "src/views/**/*",                  // Include custom type definitions
   ],
   "exclude": [
     "node_modules",                       // Exclude node_modules
